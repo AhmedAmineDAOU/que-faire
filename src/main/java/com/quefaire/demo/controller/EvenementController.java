@@ -13,8 +13,12 @@ import java.util.List;
 @RequestMapping("/api/evenements")
 public class EvenementController {
 
+    private final EvenementService evenementService;
+
     @Autowired
-    private EvenementService evenementService;
+    public EvenementController(EvenementService evenementService) {
+        this.evenementService = evenementService;
+    }
 
     @GetMapping
     public List<Evenement> getAllEvenements() {
