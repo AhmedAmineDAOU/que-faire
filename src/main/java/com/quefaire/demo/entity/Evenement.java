@@ -50,6 +50,14 @@ public class Evenement {
     @OneToOne(mappedBy = "evenement", cascade = CascadeType.ALL)
     private Accessibilite accessibilite;
 
+    /*
+        for test purpose
+     */
+    public Evenement(String id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public LocalDateTime getDateStart() {
         return dateStart;
     }
