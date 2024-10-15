@@ -42,10 +42,14 @@ public class Evenement {
     public Evenement() {
     }
 
+
+    // Relation Many-to-Many avec Tag
     @ManyToMany
-    @JoinTable(name = "evenement_tags",
-            joinColumns = @JoinColumn(name = "event_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id"))
+    @JoinTable(
+            name = "evenement_tags",  // Nom de la table de jointure
+            joinColumns = @JoinColumn(name = "evenement_id"),  // Clé étrangère vers Evenement
+            inverseJoinColumns = @JoinColumn(name = "tag_id")  // Clé étrangère vers Tag
+    )
     private List<Tag> tags;
 
     @ManyToOne

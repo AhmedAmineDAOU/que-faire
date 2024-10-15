@@ -1,14 +1,13 @@
 package com.quefaire.demo.entity;
 
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+@Table(name = "tag", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "name")
+})
 public class Tag {
 
     @Id
