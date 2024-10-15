@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
-
 @Entity
 public class Evenement {
 
@@ -50,7 +48,7 @@ public class Evenement {
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tags;
 
-    @OneToOne(mappedBy = "evenement", cascade = CascadeType.ALL)
+    @ManyToOne
     private Accessibilite accessibilite;
 
     /*
