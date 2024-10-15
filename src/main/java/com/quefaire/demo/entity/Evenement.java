@@ -41,6 +41,9 @@ public class Evenement {
     @OneToMany(mappedBy = "evenement", cascade = CascadeType.ALL)
     private List<Contact> contacts;
 
+    public Evenement() {
+    }
+
     @ManyToMany
     @JoinTable(name = "evenement_tags",
             joinColumns = @JoinColumn(name = "event_id"),

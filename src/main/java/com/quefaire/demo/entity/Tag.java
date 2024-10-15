@@ -20,5 +20,27 @@ public class Tag {
     @ManyToMany(mappedBy = "tags")
     private List<Evenement> evenements;
 
-    // Getters et Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Evenement> getEvenements() {
+        return evenements;
+    }
+
+    public void setEvenements(List<Evenement> evenements) {
+        this.evenements = evenements;
+    }
 }
