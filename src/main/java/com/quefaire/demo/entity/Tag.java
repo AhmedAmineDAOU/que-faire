@@ -16,8 +16,8 @@ public class Tag {
 
     private String name; // Par exemple, "Expo"
 
-    @ManyToMany(mappedBy = "tags")
-    private List<Evenement> evenements;
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
+    private List<Event> events;
 
     public Long getId() {
         return id;
@@ -35,11 +35,11 @@ public class Tag {
         this.name = name;
     }
 
-    public List<Evenement> getEvenements() {
-        return evenements;
+    public List<Event> getEvents() {
+        return events;
     }
 
-    public void setEvenements(List<Evenement> evenements) {
-        this.evenements = evenements;
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }
