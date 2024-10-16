@@ -28,7 +28,9 @@ public class Event {
     private String coverCredit;
 
 
-    @OneToOne(mappedBy = "event", cascade = CascadeType.ALL)
+    // Relation OneToOne unidirectionnelle avec Location
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "pricing_id")  // Clé étrangère vers Location
     private Pricing pricing;
 
 
@@ -36,19 +38,15 @@ public class Event {
     private String audience;
     private String locale;
 
-    // Relation OneToOne avec Location
+    // Relation OneToOne unidirectionnelle avec Location
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "location_id")
+    @JoinColumn(name = "location_id")  // Clé étrangère vers Location
     private Location location;
 
     // Relation OneToOne avec Contact
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_id")
     private Contact contact;
-
-    public Event() {
-    }
-
 
     // Relation Many-to-Many avec Tag
     @ManyToMany(fetch = FetchType.LAZY)
@@ -64,6 +62,9 @@ public class Event {
     @JoinColumn(name = "accessibility_id")  // Clé étrangère vers Accessibilite
     private Accessibility accessibility;
 
+
+    public Event() {
+    }
 
 
 }

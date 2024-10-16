@@ -2,6 +2,7 @@ package com.quefaire.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "contact")
 public class Contact {
 
     @Id
@@ -14,9 +15,7 @@ public class Contact {
     private String contactFacebook;
     private String contactTwitter;
 
-    @ManyToOne
-    @JoinColumn(name = "event_id")
-    private Evenement evenement;
+    private Event event;
 
     public Long getId() {
         return id;
@@ -66,11 +65,11 @@ public class Contact {
         this.contactTwitter = contactTwitter;
     }
 
-    public Evenement getEvenement() {
-        return evenement;
+    public Event getEvenement() {
+        return event;
     }
 
-    public void setEvenement(Evenement evenement) {
-        this.evenement = evenement;
+    public void setEvenement(Event event) {
+        this.event = event;
     }
 }

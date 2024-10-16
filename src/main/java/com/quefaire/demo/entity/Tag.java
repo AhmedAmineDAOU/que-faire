@@ -14,7 +14,7 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name; // Par exemple, "Expo"
+    private String name;
 
     @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
     private List<Event> events;
