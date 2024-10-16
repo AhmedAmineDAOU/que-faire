@@ -1,4 +1,5 @@
 package com.quefaire.demo.entity;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,7 +16,6 @@ public class Contact {
     private String contactFacebook;
     private String contactTwitter;
 
-    private Event event;
 
     public Long getId() {
         return id;
@@ -65,11 +65,4 @@ public class Contact {
         this.contactTwitter = contactTwitter;
     }
 
-    public Event getEvenement() {
-        return event;
-    }
-
-    public void setEvenement(Event event) {
-        this.event = event;
-    }
 }

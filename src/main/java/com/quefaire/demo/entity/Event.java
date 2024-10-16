@@ -28,9 +28,9 @@ public class Event {
     private String coverCredit;
 
 
-    // Relation OneToOne unidirectionnelle avec Location
+    // Relation OneToOne unidirectionnelle avec Pricing
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "pricing_id")  // Clé étrangère vers Location
+    @JoinColumn(name = "pricing_id")  // Clé étrangère vers Pricing
     private Pricing pricing;
 
 

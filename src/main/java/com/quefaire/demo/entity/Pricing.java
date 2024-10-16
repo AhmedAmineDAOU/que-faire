@@ -14,8 +14,6 @@ public class Pricing {
 
     @Lob
     private String priceDetail;
-    
-    private Event event;
 
     public Long getId() {
         return id;
@@ -39,13 +37,5 @@ public class Pricing {
 
     public void setPriceDetail(String priceDetail) {
         this.priceDetail = priceDetail;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event Event) {
-        this.event = Event;
     }
 }

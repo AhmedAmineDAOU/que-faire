@@ -1,4 +1,5 @@
 package com.quefaire.demo.entity;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -15,8 +16,6 @@ public class Location {
     private String addressCity;
     private Double latitude;
     private Double longitude;
-
-    private Event event;
 
     public Long getId() {
         return id;
@@ -72,13 +71,5 @@ public class Location {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
-    }
-
-    public Event getEvenement() {
-        return event;
-    }
-
-    public void setEvenement(Event event) {
-        this.event = event;
     }
 }
