@@ -19,12 +19,10 @@ public class Accessibility {
     private Boolean deaf;
     private Boolean pmr;
 
-    // Relation One-to-Many avec Event
-    @OneToMany(mappedBy = "accessibility", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Event> events;
 
     // Constructeurs, getters et setters
-    public Accessibility() {}
+    public Accessibility() {
+    }
 
     public Accessibility(Boolean blind, Boolean deaf, Boolean pmr) {
         this.blind = blind;
@@ -64,11 +62,4 @@ public class Accessibility {
         this.pmr = pmr;
     }
 
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
 }
