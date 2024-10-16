@@ -1,13 +1,9 @@
 package com.quefaire.demo.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.*;
 
 @Entity
-public class Localisation {
+@Table(name = "location")
+public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +16,7 @@ public class Localisation {
     private Double latitude;
     private Double longitude;
 
-    @OneToOne
-    @JoinColumn(name = "event_id", referencedColumnName = "id")
-    private Evenement evenement;
+    private Event event;
 
     public Long getId() {
         return id;
@@ -80,11 +74,11 @@ public class Localisation {
         this.longitude = longitude;
     }
 
-    public Evenement getEvenement() {
-        return evenement;
+    public Event getEvenement() {
+        return event;
     }
 
-    public void setEvenement(Evenement evenement) {
-        this.evenement = evenement;
+    public void setEvenement(Event event) {
+        this.event = event;
     }
 }

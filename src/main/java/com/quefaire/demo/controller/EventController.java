@@ -1,7 +1,7 @@
 package com.quefaire.demo.controller;
 
-import com.quefaire.demo.entity.Evenement;
-import com.quefaire.demo.service.EvenementService;
+import com.quefaire.demo.entity.Event;
+import com.quefaire.demo.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,26 +12,26 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/evenements")
-public class EvenementController {
+public class EventController {
 
-    private final EvenementService evenementService;
+    private final EventService eventService;
 
     @Autowired
-    public EvenementController(EvenementService evenementService) {
-        this.evenementService = evenementService;
+    public EventController(EventService eventService) {
+        this.eventService = eventService;
     }
 
     @GetMapping
-    public List<Evenement> getAllEvenements() {
-        return evenementService.getAllEvenements();
+    public List<Event> getAllEvenements() {
+        return eventService.getAllEvenements();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getEvenementById(@PathVariable String id) {
-        Evenement evenement = evenementService.getEvenementById(id);
-        if (evenement == null) {
+        Event event = eventService.getEvenementById(id);
+        if (event == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(evenement);
+        return ResponseEntity.ok(event);
     }
 }

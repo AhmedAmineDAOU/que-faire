@@ -1,7 +1,7 @@
 package com.quefaire.demo.controller;
 
-import com.quefaire.demo.entity.Evenement;
-import com.quefaire.demo.service.EvenementService;
+import com.quefaire.demo.entity.Event;
+import com.quefaire.demo.service.EventService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,25 +17,27 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@WebMvcTest(EvenementController.class)
-class EvenementControllerTest {
+@WebMvcTest(EventController.class)
+class EventControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private EvenementService evenementService;
+    private EventService eventService;
 
     @BeforeEach
     public void resetMocks() {
         // Réinitialiser les mocks avant chaque test
-        reset(evenementService);
+        reset(eventService);
     }
 
     @Test
     void getEvenementByIdIfEventFound() throws Exception {
         // Simule le comportement du service pour renvoyer un événement lorsque l'ID "1" est demandé
-        Evenement mockEvenement = new Evenement("1", "Titre de l'événement");
-        when(evenementService.getEvenementById("1")).thenReturn(mockEvenement);
+        Event mockEvent = new Event();
+        mockEvent.setId("1");
+        mockEvent.setTitle("Titre de l'événement");
+        when(eventService.getEvenementById("1")).thenReturn(mockEvent);
         // Simule une requête GET à /evenements/1 et vérifie la réponse
         mockMvc.perform(get("/api/evenements/1")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -47,7 +49,7 @@ class EvenementControllerTest {
     @Test
     void getEvenementByIdIfEventNotFound() throws Exception {
         // Simule le comportement du service pour renvoyer null (l'événement n'existe pas)
-        when(evenementService.getEvenementById("1")).thenReturn(null);
+        when(eventService.getEvenementById("1")).thenReturn(null);
         // Simule une requête GET à /evenements/1 et vérifie la réponse 404 Not Found
         mockMvc.perform(get("/api/evenements/1")
                         .contentType(MediaType.APPLICATION_JSON))

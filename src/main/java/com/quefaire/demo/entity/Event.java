@@ -66,5 +66,139 @@ public class Event {
     public Event() {
     }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getLeadText() {
+        return leadText;
+    }
+
+    public void setLeadText(String leadText) {
+        this.leadText = leadText;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getDateStart() {
+        return dateStart;
+    }
+
+    public void setDateStart(LocalDateTime dateStart) {
+        this.dateStart = dateStart;
+    }
+
+    public LocalDateTime getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(LocalDateTime dateEnd) {
+        this.dateEnd = dateEnd;
+    }
+
+    public String getDateDescription() {
+        return dateDescription;
+    }
+
+    public void setDateDescription(String dateDescription) {
+        this.dateDescription = dateDescription;
+    }
+
+    public String getCoverUrl() {
+        return coverUrl;
+    }
+
+    public void setCoverUrl(String coverUrl) {
+        this.coverUrl = coverUrl;
+    }
+
+    public String getCoverCredit() {
+        return coverCredit;
+    }
+
+    public void setCoverCredit(String coverCredit) {
+        this.coverCredit = coverCredit;
+    }
+
+    public Pricing getPricing() {
+        return pricing;
+    }
+
+    public void setPricing(Pricing pricing) {
+        this.pricing = pricing;
+    }
+
+    public String getAccessType() {
+        return accessType;
+    }
+
+    public void setAccessType(String accessType) {
+        this.accessType = accessType;
+    }
+
+    public String getAudience() {
+        return audience;
+    }
+
+    public void setAudience(String audience) {
+        this.audience = audience;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public Accessibility getAccessibility() {
+        return accessibility;
+    }
+
+    public void setAccessibility(Accessibility accessibility) {
+        this.accessibility = accessibility;
+    }
 }
