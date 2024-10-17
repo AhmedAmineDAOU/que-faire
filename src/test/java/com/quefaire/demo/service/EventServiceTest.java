@@ -61,7 +61,7 @@ class EventServiceTest {
     }
 
     @Test
-    public void testUpdateEvenementSuccess() {
+    public void testUpdateEventSuccess() {
         //given
         String eventId = "123";
         Event existingEvent = new Event();
@@ -82,7 +82,7 @@ class EventServiceTest {
          */
         when(eventRepository.save(any(Event.class))).thenReturn(existingEvent);
         // executer la methode de mon service
-        Event result = eventService.updateEvenement(eventId, updatedEvent);
+        Event result = eventService.updateEvent(eventId, updatedEvent);
         assertNotNull(result);
         assertEquals("New Title", result.getTitle());
         assertEquals("New Lead Text", result.getLeadText());
@@ -98,7 +98,7 @@ class EventServiceTest {
         e.setTitle("New Title");
         e.setLeadText("New Lead Text");
         assertThrows(NoSuchElementException.class, () -> {
-            eventService.updateEvenement(eventId, e);
+            eventService.updateEvent(eventId, e);
         });
         verify(eventRepository, times(1)).findById(eventId);
         verify(eventRepository, never()).save(any(Event.class));

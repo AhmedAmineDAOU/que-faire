@@ -39,17 +39,17 @@ public class EventService {
         this.eventRepository = eventRepository;
     }
 
-    public List<Event> getAllEvenements() {
+    public List<Event> getAllEvents() {
         return eventRepository.findAll();
     }
 
-    public Event getEvenementById(String id) {
+    public Event getEvent(String id) {
         return eventRepository.findById(id).orElse(null);
     }
     // Autres méthodes pour ajouter, mettre à jour, supprimer un événement à venir.
 
     // Fonction de mise à jour d'un événement
-    public Event updateEvenement(String id, Event updatedEvent) {
+    public Event updateEvent(String id, Event updatedEvent) {
         // Vérifier si l'événement avec cet ID existe
         return eventRepository.findById(id)
                 .map(existingEvenement -> {
@@ -72,5 +72,9 @@ public class EventService {
                     CollectionsUtil.updateList(existingEvenement.getTags(), updatedEvent.getTags(), Tag::getName);
                     return eventRepository.save(existingEvenement);
                 }).orElseThrow(() -> new NoSuchElementException("Événement introuvable avec l'ID : " + id));
+    }
+
+    public Event save(Event event) {
+        return eventRepository.save(event);
     }
 }
