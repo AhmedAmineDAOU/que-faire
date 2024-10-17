@@ -39,7 +39,7 @@ public class EventController {
 
     @PostMapping(value = "/events")
     public ResponseEntity<Void> createEvent(@RequestBody Event newEvent) {
-        Event event = eventService.save(newEvent);
+        Event event = eventService.saveEvent(newEvent);
         return entityWithLocation(event.getId());
     }
 

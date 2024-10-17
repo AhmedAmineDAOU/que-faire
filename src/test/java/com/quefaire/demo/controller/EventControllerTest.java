@@ -37,7 +37,7 @@ class EventControllerTest {
         Event mockEvent = new Event();
         mockEvent.setId("1");
         mockEvent.setTitle("Titre de l'événement");
-        when(eventService.getEvenementById("1")).thenReturn(mockEvent);
+        when(eventService.getEvent("1")).thenReturn(mockEvent);
         // Simule une requête GET à /evenements/1 et vérifie la réponse
         mockMvc.perform(get("/api/evenements/1")
                         .contentType(MediaType.APPLICATION_JSON))
@@ -49,7 +49,7 @@ class EventControllerTest {
     @Test
     void getEvenementByIdIfEventNotFound() throws Exception {
         // Simule le comportement du service pour renvoyer null (l'événement n'existe pas)
-        when(eventService.getEvenementById("1")).thenReturn(null);
+        when(eventService.getEvent("1")).thenReturn(null);
         // Simule une requête GET à /evenements/1 et vérifie la réponse 404 Not Found
         mockMvc.perform(get("/api/evenements/1")
                         .contentType(MediaType.APPLICATION_JSON))

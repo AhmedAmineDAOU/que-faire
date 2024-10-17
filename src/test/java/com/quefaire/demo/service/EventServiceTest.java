@@ -77,7 +77,7 @@ class EventServiceTest {
          */
         when(eventRepository.findById(eventId)).thenReturn(Optional.of(existingEvent));
 
-        /* dis à mockito de capturer tout save() executee sur les objet de class Event et
+        /* dis à mockito de capturer tout saveEvent() executee sur les objet de class Event et
             retourner l'objet existingEvent pour verifier sa mise a jour
          */
         when(eventRepository.save(any(Event.class))).thenReturn(existingEvent);

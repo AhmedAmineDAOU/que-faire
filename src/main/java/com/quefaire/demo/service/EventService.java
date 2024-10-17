@@ -74,7 +74,7 @@ public class EventService {
                 }).orElseThrow(() -> new NoSuchElementException("Événement introuvable avec l'ID : " + id));
     }
 
-    public Event save(Event event) {
+    public Event saveEvent(Event event) {
         return eventRepository.save(event);
     }
 }
