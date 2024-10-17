@@ -38,7 +38,7 @@ class EventServiceTest {
         mockEvent.setTitle("Titre de l'événement");
         when(eventRepository.findById("1")).thenReturn(Optional.of(mockEvent));
         // Appelle la méthode du service et vérifie le résultat
-        Event event = eventService.getEvenementById("1");
+        Event event = eventService.getEvent("1");
         // Vérifie que l'événement retourné est correct
         assertNotNull(event);
         assertEquals("1", event.getId());
@@ -53,7 +53,7 @@ class EventServiceTest {
         // Simule que le repository ne trouve pas d'événement (renvoie Optional.empty)
         when(eventRepository.findById("1")).thenReturn(Optional.empty());
         // Appelle la méthode du service
-        Event event = eventService.getEvenementById("1");
+        Event event = eventService.getEvent("1");
         // Vérifie que le service retourne null
         assertNull(event);
         // Vérifie que la méthode findById a bien été appelée
