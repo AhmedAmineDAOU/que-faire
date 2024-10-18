@@ -5,6 +5,7 @@ import com.quefaire.demo.service.EventService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -37,29 +38,9 @@ public class EventController {
         return ResponseEntity.ok(event);
     }
 
-    @PostMapping(value = "/events")
-    public ResponseEntity<Void> createEvent(@RequestBody Event newEvent) {
+    @PostMapping(value = "/api/events")
+    public ResponseEntity<Event> createEvent(@RequestBody Event newEvent) {
         Event event = eventService.saveEvent(newEvent);
-        return entityWithLocation(event.getId());
-    }
-
-
-    /**
-     * Return a response with the location of the new resource.
-     *
-     */
-    private ResponseEntity<Void> entityWithLocation(Object resourceId) {
-
-        // Determines URL of child resource based on the full URL of the given
-        // request, appending the path info with the given resource Identifier
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentRequestUri()
-                .path("/{resourceId}")
-                .buildAndExpand(resourceId)
-                .toUri();
-
-        // Return an HttpEntity object - it will be used to build the
-        // HttpServletResponse
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(event);
     }
 }
