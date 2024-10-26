@@ -38,6 +38,9 @@ public class Event {
     private String audience;
     private String locale;
 
+    @Version
+    private Long version;  // Colonne utilisée pour l'optimistic locking
+    
     // Relation OneToOne unidirectionnelle avec Location
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "location_id")  // Clé étrangère vers Location
