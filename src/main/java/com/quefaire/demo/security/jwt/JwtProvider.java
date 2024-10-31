@@ -1,5 +1,6 @@
 package com.quefaire.demo.security.jwt;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.Map;
+import java.util.function.Function;
 
 import static io.jsonwebtoken.SignatureAlgorithm.forSigningKey;
 
@@ -36,9 +39,10 @@ public class JwtProvider {
      * @return
      * function called when a user's authentication succeeds
      */
-    public String generateJwtToken(String username) {
+    public String generateJwtToken(String username, Map<String, Object> otherClaims) {
         return Jwts.builder()
                 .subject(username)
+                .claims(otherClaims)
                 .issuedAt(new Date())
                 .expiration(new Date(new Date().getTime() + jwtExpirationMs))
                 .signWith(key, forSigningKey(key))
@@ -46,10 +50,21 @@ public class JwtProvider {
     }
 
     public String getUsernameFromJwtToken(String token) {
-        return "";
+        return getClaimFromToken(token, Claims::getSubject);
+    }
+
+    public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = getAllClaimsFromToken(token);
+        return claimsResolver.apply(claims);
+    }
+
+    //for retrieveing any information from token we will need the secret key
+    private Claims getAllClaimsFromToken(String token) {
+        return Jwts.parser().setSigningKey(token).build().parseSignedClaims(token).getBody();
     }
 
     public boolean validateJwtToken(String token) {
-        return false;
+        return true;
     }
+
 }
